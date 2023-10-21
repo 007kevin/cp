@@ -1,0 +1,18 @@
+#!/bin/sh
+if [ -z "$1" ]
+then
+    echo "No python argument supplied"
+    exit 0
+fi
+if [ -z "$2" ]
+then
+    echo "No input argument supplied"
+    exit 0
+fi
+FILE=$(basename $1)
+FROM=./src/$FILE
+TO=./output/$FILE
+rm -rf ./output/*
+cp $FROM $TO
+INPUT="$(echo "$2" | awk 'NF {p=1} p' | tac | awk 'NF {p=1} p' | tac)"
+echo "$INPUT" | python3 $TO

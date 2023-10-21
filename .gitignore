@@ -1,0 +1,12 @@
+# JAVA
+.gradle
+build
+bin
+.classpath
+.idea
+.settings
+lombok.config
+workspace
+
+# PYTHON
+output
