@@ -28,4 +28,4 @@ https://github.com/peterlamar/python-cp-cheatsheet
 | https://codeforces.com/problemset/problem/1859/C |   1200 |      | n      |
 | https://codeforces.com/problemset/problem/1857/F |   1600 |      |        |
 | https://codeforces.com/problemset/problem/1857/E |   1500 |  60+ | y      |
-|                                                  |        |      |        |
+| https://codeforces.com/problemset/problem/1857/D |   1300 |  60+ | y      |

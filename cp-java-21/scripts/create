@@ -1,0 +1,12 @@
+#!/bin/bash
+if [ -z "$1" ]
+then
+    echo "No argument supplied"
+    exit 0
+fi
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+NAME=$1
+FILENAME=$NAME.java
+OUTPUT=$DIR/../src/main/java/cp/$FILENAME
+cat $DIR/../src/main/java/cp/Template.java | sed "s/Template/$NAME/g" | sed "s/INSERT_DATE/$(date)/g" > $OUTPUT
+echo $OUTPUT
