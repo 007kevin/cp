@@ -3,13 +3,13 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Problem    = Template
- * Date       = INSERT_DATE
+ * Problem    = cf1895c
+ * Date       = Mon Nov 13 20:22:16 PST 2023
  */
-public class Template {
+public class cf1895c {
 
     public void run() {
-
+        int n = in.nextInt();
     }
 
     /////////////////////////////////////////////////////////////////////////////
@@ -22,6 +22,6 @@ public class Template {
     ){ p();return t.nextToken();}int nextInt() {return Integer.parseInt(next());}
     long nextLong() { return Long.parseLong(next());} double nextDouble(){ return
     Double.parseDouble( next() ); } } public static void main ( String[ ]args ) {
-    Template t=new Template();t.run();t.c();}
+    cf1895c t=new cf1895c();t.run();t.c();}
     /////////////////////////////////////////////////////////////////////////////
 }

@@ -1,12 +1,12 @@
-package cp;
+
 import java.io.*;
 import java.util.*;
 
 /**
- * Problem    = Template
- * Date       = INSERT_DATE
+ * Problem    = cf1883g1
+ * Date       = Tue Nov 21 20:07:32 PST 2023
  */
-public class Template {
+public class cf1883g1 {
 
     public void run() {
 
@@ -22,6 +22,6 @@ public class Template {
     ){ p();return t.nextToken();}int nextInt() {return Integer.parseInt(next());}
     long nextLong() { return Long.parseLong(next());} double nextDouble(){ return
     Double.parseDouble( next() ); } } public static void main ( String[ ]args ) {
-    Template t=new Template();t.run();t.c();}
+    cf1883g1 t=new cf1883g1();t.run();t.c();}
     /////////////////////////////////////////////////////////////////////////////
 }

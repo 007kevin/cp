@@ -10,22 +10,36 @@ https://github.com/peterlamar/python-cp-cheatsheet
 
 [Oct 2/2023] [[https://codeforces.com/problemset/page/1?tags=1200-1600][default sort 1200-1600]]
 
-| problem                                          | rating | time | solved |
-|--------------------------------------------------+--------+------+--------|
-| https://codeforces.com/contest/1879/problem/C    |   1300 |      | n      |
-| https://codeforces.com/contest/1873/problem/G    |   1500 |      | n      |
-| https://codeforces.com/problemset/problem/1873/F |   1300 |   52 | y      |
-| https://codeforces.com/problemset/problem/1872/D |   1200 |  108 | n      |
-| https://codeforces.com/problemset/problem/1870/C |   1300 |      | n      |
-| https://codeforces.com/problemset/problem/1870/B |   1200 |   60 | y      |
-| https://codeforces.com/problemset/problem/1866/B |   1400 |      | n      |
-| https://codeforces.com/problemset/problem/1862/D |   1300 |   46 | y      |
-| https://codeforces.com/problemset/problem/1863/D |   1400 |   43 | y      |
-| https://codeforces.com/problemset/problem/1862/E |   1600 |  60+ | n      |
-| https://codeforces.com/problemset/problem/1860/B |   1200 |   40 | y      |
-| https://codeforces.com/problemset/problem/1868/A |   1300 |      | n      |
-| https://codeforces.com/problemset/problem/1858/B |   1500 |   60 | y      |
-| https://codeforces.com/problemset/problem/1859/C |   1200 |      | n      |
-| https://codeforces.com/problemset/problem/1857/F |   1600 |      |        |
-| https://codeforces.com/problemset/problem/1857/E |   1500 |  60+ | y      |
-| https://codeforces.com/problemset/problem/1857/D |   1300 |  60+ | y      |
+|  n |                                                  | problem | rating | time | solved |
+|----+--------------------------------------------------+---------+--------+------+--------|
+|  1 | https://codeforces.com/contest/1879/problem/C    |    1300 |        | n    |        |
+|  2 | https://codeforces.com/contest/1873/problem/G    |    1500 |        | n    |        |
+|  3 | https://codeforces.com/problemset/problem/1873/F |    1300 |     52 | y    |        |
+|  4 | https://codeforces.com/problemset/problem/1872/D |    1200 |    108 | n    |        |
+|  5 | https://codeforces.com/problemset/problem/1870/C |    1300 |        | n    |        |
+|  6 | https://codeforces.com/problemset/problem/1870/B |    1200 |     60 | y    |        |
+|  7 | https://codeforces.com/problemset/problem/1866/B |    1400 |        | n    |        |
+|  8 | https://codeforces.com/problemset/problem/1862/D |    1300 |     46 | y    |        |
+|  9 | https://codeforces.com/problemset/problem/1863/D |    1400 |     43 | y    |        |
+| 10 | https://codeforces.com/problemset/problem/1862/E |    1600 |    60+ | n    |        |
+| 11 | https://codeforces.com/problemset/problem/1860/B |    1200 |     40 | y    |        |
+| 12 | https://codeforces.com/problemset/problem/1868/A |    1300 |        | n    |        |
+| 13 | https://codeforces.com/problemset/problem/1858/B |    1500 |     60 | y    |        |
+| 14 | https://codeforces.com/problemset/problem/1859/C |    1200 |        | n    |        |
+| 15 | https://codeforces.com/problemset/problem/1857/F |    1600 |        |      |        |
+| 16 | https://codeforces.com/problemset/problem/1857/E |    1500 |    60+ | y    |        |
+| 17 | https://codeforces.com/problemset/problem/1857/D |    1300 |    60+ | y    |        |
+| 18 | https://codeforces.com/problemset/problem/1895/C |    1400 |        | n    |        |
+| 19 | https://codeforces.com/problemset/problem/1893/A |    1400 |        |      |        |
+| 20 | https://codeforces.com/problemset/problem/1891/C |    1500 |     90 | y    |        |
+| 21 | https://codeforces.com/problemset/problem/1889/A |    1300 |        |      |        |
+| 22 | https://codeforces.com/problemset/problem/1886/C |    1600 |    90+ | y    |        |
+| 23 | https://codeforces.com/problemset/problem/1886/B |    1200 |     36 | y    |        |
+| 24 | https://codeforces.com/problemset/problem/1883/F |    1400 |        | n    |        |
+| 25 | https://codeforces.com/problemset/problem/1883/D |    1500 |        |      |        |
+| 26 | https://codeforces.com/problemset/problem/1899/E |    1300 |     20 | y    |        |
+| 27 | https://codeforces.com/problemset/problem/1899/D |    1300 |    60+ | y    |        |
+| 28 | https://codeforces.com/problemset/problem/1898/B |    1500 |        | n    |        |
+| 29 | https://codeforces.com/problemset/problem/1896/C |    1400 |        |      |        |
+#+tblfm: $1=@#-1
+press C-c C-c to activate

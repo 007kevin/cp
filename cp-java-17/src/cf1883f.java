@@ -1,15 +1,36 @@
-package cp;
+
 import java.io.*;
 import java.util.*;
 
 /**
- * Problem    = Template
- * Date       = INSERT_DATE
+ * Problem    = cf1883f
+ * Date       = Tue Nov 21 21:01:36 PST 2023
  */
-public class Template {
+public class cf1883f {
 
     public void run() {
-
+        int t = in.nextInt();
+        while(t-->0){
+            int n = in.nextInt();
+            int[] a = new int[n];
+            int[] b = new int[n];
+            for(int i = 0; i < n; ++i) a[i]=in.nextInt();
+            Set<Integer> set = new HashSet<>();
+            for(int i = n-1; i >= 0; --i)
+                if (!set.contains(a[i])){
+                    set.add(a[i]);
+                    b[i]=1;
+                }
+            for(int i = n-2; i >= 0; --i) b[i]+=b[i+1];
+            set.clear();
+            long s = 0l;
+            for(int i = 0; i < n; ++i)
+                if (!set.contains(a[i])){
+                    set.add(a[i]);
+                    s += b[i];
+                }
+            out.println(s);
+        }
     }
 
     /////////////////////////////////////////////////////////////////////////////
@@ -22,6 +43,6 @@ public class Template {
     ){ p();return t.nextToken();}int nextInt() {return Integer.parseInt(next());}
     long nextLong() { return Long.parseLong(next());} double nextDouble(){ return
     Double.parseDouble( next() ); } } public static void main ( String[ ]args ) {
-    Template t=new Template();t.run();t.c();}
+    cf1883f t=new cf1883f();t.run();t.c();}
     /////////////////////////////////////////////////////////////////////////////
 }
