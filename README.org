@@ -1,12 +1,28 @@
 #+STARTUP: showeverything
 
 * Resources
+:PROPERTIES:
+:HASH:     237278734230280121
+:MODIFIED: 2024-04-12 15:25
+:END:
 ** How To Practice
+:PROPERTIES:
+:HASH:     -703145958019773065
+:MODIFIED: 2024-04-12 15:25
+:END:
 https://codeforces.com/blog/entry/116371
 ** Python
+:PROPERTIES:
+:HASH:     353051787692943696
+:MODIFIED: 2024-04-12 15:25
+:END:
 https://github.com/peterlamar/python-cp-cheatsheet
 
 * Progress
+:PROPERTIES:
+:HASH:     -305560755139877808
+:MODIFIED: 2024-05-04 21:23
+:END:
 
 [Oct 2/2023] [[https://codeforces.com/problemset/page/1?tags=1200-1600][default sort 1200-1600]]
 
@@ -41,5 +57,11 @@ https://github.com/peterlamar/python-cp-cheatsheet
 | 27 | https://codeforces.com/problemset/problem/1899/D |    1300 |    60+ | y    |        |
 | 28 | https://codeforces.com/problemset/problem/1898/B |    1500 |        | n    |        |
 | 29 | https://codeforces.com/problemset/problem/1896/C |    1400 |        |      |        |
+| 30 | https://codeforces.com/problemset/problem/1948/C |         |        |      |        |
 #+tblfm: $1=@#-1
 press C-c C-c to activate
+
+[May 4/2024]
+https://drive.google.com/file/d/1J2x8pIYQ3MXANgvzOgBciWd3d79j_Exa/view
+https://codeforces.com/blog/entry/103077
+https://kenkoooo.com/atcoder/#/training/Boot%20camp%20for%20Beginners/1
