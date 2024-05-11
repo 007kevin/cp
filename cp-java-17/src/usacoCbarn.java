@@ -3,10 +3,10 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Problem    = Template
- * Date       = INSERT_DATE
+ * Problem    = usacoCbarn
+ * Date       = Sat May 11 01:07:54 PDT 2024
  */
-public class Template {
+public class usacoCbarn {
 
   public void run() {
 
@@ -25,7 +25,7 @@ public class Template {
   true;}boolean hasNext(){return p();}String next(){p();return t.nextToken();}int
   nextInt(){return Integer.parseInt(next());}long nextLong(){return Long.parseLong(
   next());}double nextDouble(){return Double.parseDouble(next());}}public static
-  void main(String[]args){Template t=new Template();t.run();t.c();}
+  void main(String[]args){usacoCbarn t=new usacoCbarn();t.run();t.c();}
   /////////////////////////////////////////////////////////////////////////////////
-  static String file;
+  static String file = "hello";
 }

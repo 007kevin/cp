@@ -7,6 +7,17 @@ fi
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 NAME=$1
 FILENAME=$NAME.java
-OUTPUT=$DIR/../src/$FILENAME
-cat $DIR/../src/Template.java | sed "s/Template/$NAME/g" | sed "s/INSERT_DATE/$(date)/g" > $OUTPUT
-echo $OUTPUT
+FILEPATH=$DIR/../src/$FILENAME
+OUTPUT=$(cat $DIR/../src/Template.java)
+OUTPUT=$(echo "$OUTPUT" | sed "s/Template/$NAME/g")
+OUTPUT=$(echo "$OUTPUT" | sed "s/INSERT_DATE/$(date)/g")
+
+# add file name for usaco
+if [[ $NAME == usaco* ]] ; then
+  SUFFIX=$(echo "$NAME" | sed 's/usaco*//' | awk '{print tolower($0)}')
+  OUTPUT=$(echo "$OUTPUT" | sed "s/static String file;/static String file = \"$SUFFIX\";/g")
+fi
+
+echo "$OUTPUT" > $FILEPATH
+
+echo $FILEPATH

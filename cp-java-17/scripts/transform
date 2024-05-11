@@ -18,7 +18,7 @@ fi
 #Transform classname into main
 OUTPUT=$(echo "$OUTPUT" | sed "s/$CLASSNAME/Main/g")
 
+#Remove file name for usaco
+OUTPUT=$(echo "$OUTPUT" | sed "s/static String file = .*;/static String file;/g")
 
 echo "$OUTPUT" > $DIR/../output/Main.java
-
-

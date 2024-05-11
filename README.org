@@ -20,8 +20,8 @@ https://github.com/peterlamar/python-cp-cheatsheet
 
 * Progress
 :PROPERTIES:
-:HASH:     -305560755139877808
-:MODIFIED: 2024-05-04 21:23
+:HASH:     -490446297499652142
+:MODIFIED: 2024-05-07 22:39
 :END:
 
 [Oct 2/2023] [[https://codeforces.com/problemset/page/1?tags=1200-1600][default sort 1200-1600]]
@@ -65,3 +65,6 @@ press C-c C-c to activate
 https://drive.google.com/file/d/1J2x8pIYQ3MXANgvzOgBciWd3d79j_Exa/view
 https://codeforces.com/blog/entry/103077
 https://kenkoooo.com/atcoder/#/training/Boot%20camp%20for%20Beginners/1
+
+USACO Guide
+https://usaco.guide/bronze

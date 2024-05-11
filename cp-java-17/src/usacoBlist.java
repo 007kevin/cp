@@ -3,13 +3,27 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Problem    = Template
- * Date       = INSERT_DATE
+ * Problem    = usacoBlist
+ * Date       = Tue May  7 22:28:07 PDT 2024
  */
-public class Template {
+public class usacoBlist {
 
   public void run() {
-
+    int n = in.nextInt();
+    int[] m = new int[1001];
+    for(int i = 0; i < n; ++i){
+      int s = in.nextInt();
+      int t = in.nextInt();
+      int b = in.nextInt();
+      m[s]+=b;
+      m[t]-=b;
+    }
+    int max = 0;
+    for(int i = 1; i <= 1000; ++i){
+      m[i] += m[i-1];
+      max = Math.max(max,m[i]);
+    }
+    out.println(max);
   }
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -25,7 +39,7 @@ public class Template {
   true;}boolean hasNext(){return p();}String next(){p();return t.nextToken();}int
   nextInt(){return Integer.parseInt(next());}long nextLong(){return Long.parseLong(
   next());}double nextDouble(){return Double.parseDouble(next());}}public static
-  void main(String[]args){Template t=new Template();t.run();t.c();}
+  void main(String[]args){usacoBlist t=new usacoBlist();t.run();t.c();}
   /////////////////////////////////////////////////////////////////////////////////
-  static String file;
+  static String file = "blist";
 }
