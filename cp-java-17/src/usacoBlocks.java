@@ -3,24 +3,22 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Problem    = usacoCbarn
- * Date       = Sat May 11 01:53:30 PDT 2024
+ * Problem    = usacoBlocks
+ * Date       = Sat May 11 10:30:37 PDT 2024
  */
-public class usacoCbarn {
+public class usacoBlocks {
 
   public void run() {
     int n = in.nextInt();
-    int[] r = new int[n];
-    for(int i = 0; i < n; ++i) r[i]=in.nextInt();
-    int a = Integer.MAX_VALUE;
+    int[] ans = new int[256];
     for(int i = 0; i < n; ++i){
-      int w = 0;
-      for(int j = 1; j < n; ++j){
-        w+=j*r[(i+j)%n];
-      }
-      a = Math.min(a,w);
+      int[] a = new int[256];
+      int[] b = new int[256];
+      for(char c : in.next().toCharArray()) a[c]++;
+      for(char c : in.next().toCharArray()) b[c]++;
+      for(int j = 0; j < 256; ++j) ans[j]+=Math.max(a[j],b[j]);
     }
-    out.println(a);
+    for(int i = 0; i < 26; ++i) out.println(ans['a'+i]);
   }
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -36,7 +34,7 @@ public class usacoCbarn {
   true;}boolean hasNext(){return p();}String next(){p();return t.nextToken();}int
   nextInt(){return Integer.parseInt(next());}long nextLong(){return Long.parseLong(
   next());}double nextDouble(){return Double.parseDouble(next());}}public static
-  void main(String[]args){usacoCbarn t=new usacoCbarn();t.run();t.c();}
+  void main(String[]args){usacoBlocks t=new usacoBlocks();t.run();t.c();}
   /////////////////////////////////////////////////////////////////////////////////
-  static String file = "cbarn";
+  static String file = "blocks";
 }
