@@ -3,25 +3,24 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Problem    = usacoCensor
- * Date       = Sat May 18 13:17:08 PDT 2024
+ * Problem    = usacoPails
+ * Date       = Thu May 30 21:59:13 PDT 2024
  */
-public class usacoCensor {
+public class usacoPails {
 
   public void run() {
-    char[] s = in.next().toCharArray();
-    char[] t = in.next().toCharArray();
-    char[] f = new char[s.length];
-    int n = 0;
-    for(int i = 0; i < s.length; ++i){
-      f[n++]=s[i];
-      int j = 0;
-      while(n-t.length+j>=0 && j < t.length && f[n-t.length+j] == t[j])
-        j++;
-      if (j==t.length)
-        n=n-t.length;
+    int x = in.nextInt();
+    int y = in.nextInt();
+    int m = in.nextInt();
+    int u = 0;
+    for(int i = 0; i <= 1000; ++i){
+      for(int j = 0; j <= 1000; ++j){
+        int a = i*x + y*j;
+        if (a <= m)
+          u = Math.max(u, a);
+      }
     }
-    out.println(new String(f,0,n));
+    out.println(u);
   }
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -37,7 +36,7 @@ public class usacoCensor {
   true;}boolean hasNext(){return p();}String next(){p();return t.nextToken();}int
   nextInt(){return Integer.parseInt(next());}long nextLong(){return Long.parseLong(
   next());}double nextDouble(){return Double.parseDouble(next());}}public static
-  void main(String[]args){usacoCensor t=new usacoCensor();t.run();t.c();}
+  void main(String[]args){usacoPails t=new usacoPails();t.run();t.c();}
   /////////////////////////////////////////////////////////////////////////////////
-  static String file = "censor";
+  static String file = "pails";
 }

@@ -6,22 +6,15 @@ import java.util.*;
  * Problem    = usacoCensor
  * Date       = Sat May 18 13:17:08 PDT 2024
  */
-public class usacoCensor {
+public class usacoCensor1 {
 
   public void run() {
-    char[] s = in.next().toCharArray();
-    char[] t = in.next().toCharArray();
-    char[] f = new char[s.length];
-    int n = 0;
-    for(int i = 0; i < s.length; ++i){
-      f[n++]=s[i];
-      int j = 0;
-      while(n-t.length+j>=0 && j < t.length && f[n-t.length+j] == t[j])
-        j++;
-      if (j==t.length)
-        n=n-t.length;
+    String s = in.next();
+    String t = in.next();
+    while(s.contains(t)){
+      s = s.replaceFirst(t, "");
     }
-    out.println(new String(f,0,n));
+    out.println(s);
   }
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -37,7 +30,7 @@ public class usacoCensor {
   true;}boolean hasNext(){return p();}String next(){p();return t.nextToken();}int
   nextInt(){return Integer.parseInt(next());}long nextLong(){return Long.parseLong(
   next());}double nextDouble(){return Double.parseDouble(next());}}public static
-  void main(String[]args){usacoCensor t=new usacoCensor();t.run();t.c();}
+  void main(String[]args){usacoCensor1 t=new usacoCensor1();t.run();t.c();}
   /////////////////////////////////////////////////////////////////////////////////
   static String file = "censor";
 }

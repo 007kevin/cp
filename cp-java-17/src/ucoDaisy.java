@@ -3,25 +3,31 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Problem    = usacoCensor
- * Date       = Sat May 18 13:17:08 PDT 2024
+ * Problem    = ucoDaisy
+ * Date       = Thu May 30 22:10:08 PDT 2024
  */
-public class usacoCensor {
+public class ucoDaisy {
 
   public void run() {
-    char[] s = in.next().toCharArray();
-    char[] t = in.next().toCharArray();
-    char[] f = new char[s.length];
-    int n = 0;
-    for(int i = 0; i < s.length; ++i){
-      f[n++]=s[i];
-      int j = 0;
-      while(n-t.length+j>=0 && j < t.length && f[n-t.length+j] == t[j])
-        j++;
-      if (j==t.length)
-        n=n-t.length;
+    int n = in.nextInt();
+    int[] p = new int[n];
+    for(int i = 0; i < n; ++i) p[i] = in.nextInt();
+    int avg = 0;
+    for(int i = 0; i < n; ++i){
+      for(int j = i; j < n; ++j){
+        int sum = 0;
+        int cnt = 0;
+        var set = new HashSet<Integer>();
+        for(int k = i; k <= j; ++k){
+          sum+=p[k];
+          set.add(p[k]);
+          cnt++;
+        }
+        if (sum%cnt==0 && set.contains(sum/cnt)) avg++;
+      }
+
     }
-    out.println(new String(f,0,n));
+    out.println(avg);
   }
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -37,7 +43,7 @@ public class usacoCensor {
   true;}boolean hasNext(){return p();}String next(){p();return t.nextToken();}int
   nextInt(){return Integer.parseInt(next());}long nextLong(){return Long.parseLong(
   next());}double nextDouble(){return Double.parseDouble(next());}}public static
-  void main(String[]args){usacoCensor t=new usacoCensor();t.run();t.c();}
+  void main(String[]args){ucoDaisy t=new ucoDaisy();t.run();t.c();}
   /////////////////////////////////////////////////////////////////////////////////
-  static String file = "censor";
+  static String file;
 }

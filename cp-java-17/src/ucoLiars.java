@@ -3,25 +3,35 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Problem    = usacoCensor
- * Date       = Sat May 18 13:17:08 PDT 2024
+ * Problem    = ucoLiars
+ * Date       = Thu May 30 22:19:47 PDT 2024
  */
-public class usacoCensor {
+public class ucoLiars {
+
+  final static int MAX = 1000000000;
 
   public void run() {
-    char[] s = in.next().toCharArray();
-    char[] t = in.next().toCharArray();
-    char[] f = new char[s.length];
-    int n = 0;
-    for(int i = 0; i < s.length; ++i){
-      f[n++]=s[i];
-      int j = 0;
-      while(n-t.length+j>=0 && j < t.length && f[n-t.length+j] == t[j])
-        j++;
-      if (j==t.length)
-        n=n-t.length;
+    int n = in.nextInt();
+    var map = new TreeMap<Integer,Integer>();
+    for(int i = 0; i < n; ++i){
+      String d = in.next();
+      int p = in.nextInt();
+      if (d.equals("G")){
+        map.put(p, map.getOrDefault(p, 0) + 1);
+        map.put(MAX+1, map.getOrDefault(MAX+1, 0) - 1);
+      }
+      if (d.equals("L")){
+        map.put(0, map.getOrDefault(0, 0) + 1);
+        map.put(p+1, map.getOrDefault(p+1, 0) - 1);
+      }
     }
-    out.println(new String(f,0,n));
+    int m = 0;
+    int t = 0;
+    for(var v : map.values()){
+      t+=v;
+      m=Math.max(m,t);
+    }
+    out.println(n-m);
   }
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -37,7 +47,7 @@ public class usacoCensor {
   true;}boolean hasNext(){return p();}String next(){p();return t.nextToken();}int
   nextInt(){return Integer.parseInt(next());}long nextLong(){return Long.parseLong(
   next());}double nextDouble(){return Double.parseDouble(next());}}public static
-  void main(String[]args){usacoCensor t=new usacoCensor();t.run();t.c();}
+  void main(String[]args){ucoLiars t=new ucoLiars();t.run();t.c();}
   /////////////////////////////////////////////////////////////////////////////////
-  static String file = "censor";
+  static String file;
 }
