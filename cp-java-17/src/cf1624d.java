@@ -3,25 +3,59 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Problem    = usacoMooloo
- * Date       = Thu Jul 18 17:47:31 KST 2024
+ * Problem    = cf1624d
+ * Date       = Sat Sep  7 10:29:32 PDT 2024
  */
-public class usacoMooloo {
+public class cf1624d {
 
   public void run() {
-    int n = in.nextInt();
-    long k = in.nextLong();
-    long[] d = new long[n];
-    for(int i = 0; i < n; ++i)
-      d[i]=in.nextLong();
-    long cost = 0;
-    for(int i = 0; i < n;){
-      int j = i+1;
-      while(j < n && d[j]-d[i] < d[j-1]-d[i]+1+k) j++;
-      cost+=1+k+d[j-1]-d[i];
-      i=j;
+    int t = in.nextInt();
+    while(t-->0){
+      int[] c = new int[256];
+      int n = in.nextInt();
+      int k = in.nextInt();
+      var str = in.next();
+      for(int i = 0; i < n; ++i){
+        c[str.charAt(i)]++;
+      }
+      int s = 0;
+      int e = 0;
+      for(int cnt : c){
+        s+=cnt%2;
+        e+=cnt/2;
+      }
+      int l = 0, r = n;
+      int ans = 1;
+//      System.out.println(String.format("evens: %d, singles: %d", e, s));
+      while(l <= r){
+        int m = (l+r)/2;
+        int a = s, b = e;
+        int cnt = 0;
+        if (m==1){
+          cnt = n;
+        } else {
+          while(cnt < k){
+            if (m%2 == 1 && b > 0 && a == 0){
+              b--;
+              a+=2;
+            }
+            if (b - m/2 < 0) break;
+            if (a - m%2 < 0) break;
+            b-=m/2;
+            a-=m%2;
+            cnt++;
+          }
+        }
+  //      System.out.println(m + "=>" + cnt);
+        if (cnt >= k){
+          l = m+1;
+          ans = Math.max(ans, m);
+        } else {
+          r = m-1;
+        }
+      }
+      out.println(ans);
     }
-    out.println(cost);
   }
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -37,7 +71,7 @@ public class usacoMooloo {
   true;}boolean hasNext(){return p();}String next(){p();return t.nextToken();}int
   nextInt(){return Integer.parseInt(next());}long nextLong(){return Long.parseLong(
   next());}double nextDouble(){return Double.parseDouble(next());}}public static
-  void main(String[]args){usacoMooloo t=new usacoMooloo();t.run();t.c();}
+  void main(String[]args){cf1624d t=new cf1624d();t.run();t.c();}
   /////////////////////////////////////////////////////////////////////////////////
   static String file;
 }

@@ -3,25 +3,36 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Problem    = usacoMooloo
- * Date       = Thu Jul 18 17:47:31 KST 2024
+ * Problem    = usacoEvolution
+ * Date       = Tue Aug 13 13:00:53 KST 2024
  */
-public class usacoMooloo {
+public class usacoEvolution {
 
   public void run() {
-    int n = in.nextInt();
-    long k = in.nextLong();
-    long[] d = new long[n];
-    for(int i = 0; i < n; ++i)
-      d[i]=in.nextLong();
-    long cost = 0;
-    for(int i = 0; i < n;){
-      int j = i+1;
-      while(j < n && d[j]-d[i] < d[j-1]-d[i]+1+k) j++;
-      cost+=1+k+d[j-1]-d[i];
-      i=j;
+    var n = in.nextInt();
+    var map = new HashMap<String,Integer>();
+    var next = 0;
+    for(int i = 0; i < n; ++i){
+      var m = in.nextInt();
+      var arr = new int[m];
+      var list = new String[m];
+      var can = -1;
+      for(int j = 0; j < m; ++j){
+        list[j]=in.next();
+        arr[j]=map.getOrDefault(list[j],-1);
+        can = Math.max(can, arr[j]);
+      }
+      for(int j = 0; j < m; ++j){
+        if (arr[j] != -1 && arr[j] != can){
+          out.println("no");
+        }
+      }
+      for(int j = 0; j < m; ++j)
+        map.put(list[j],next);
+      next++;
+//      out.println(map);
     }
-    out.println(cost);
+    out.println("yes");
   }
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -37,7 +48,7 @@ public class usacoMooloo {
   true;}boolean hasNext(){return p();}String next(){p();return t.nextToken();}int
   nextInt(){return Integer.parseInt(next());}long nextLong(){return Long.parseLong(
   next());}double nextDouble(){return Double.parseDouble(next());}}public static
-  void main(String[]args){usacoMooloo t=new usacoMooloo();t.run();t.c();}
+  void main(String[]args){usacoEvolution t=new usacoEvolution();t.run();t.c();}
   /////////////////////////////////////////////////////////////////////////////////
-  static String file;
+  static String file = "evolution";
 }

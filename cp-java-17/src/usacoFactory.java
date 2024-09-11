@@ -3,25 +3,50 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Problem    = usacoMooloo
- * Date       = Thu Jul 18 17:47:31 KST 2024
+ * Problem    = usacoFactory
+ * Date       = Sat Jul 27 14:04:52 KST 2024
  */
-public class usacoMooloo {
+public class usacoFactory {
+
+  int N;
+  int F[][];
+  int V[][];
 
   public void run() {
-    int n = in.nextInt();
-    long k = in.nextLong();
-    long[] d = new long[n];
-    for(int i = 0; i < n; ++i)
-      d[i]=in.nextLong();
-    long cost = 0;
-    for(int i = 0; i < n;){
-      int j = i+1;
-      while(j < n && d[j]-d[i] < d[j-1]-d[i]+1+k) j++;
-      cost+=1+k+d[j-1]-d[i];
-      i=j;
+    N = in.nextInt();
+    F = new int[N+1][N+1];
+    V = new int[N+1][N+1];
+    for(int i = 0; i < N-1; ++i){
+      int a = in.nextInt();
+      int b = in.nextInt();
+      F[a][b] = 1;
     }
-    out.println(cost);
+    for(int i = 1; i <= N; ++i){
+      traverse(i,i);
+    }
+    out.println(find());
+  }
+
+  void traverse(int I, int i){
+    for(int j = 1; j <= N; ++j){
+      if (i != j && F[i][j] == 1 && V[j][I] == 0){
+        V[j][I] = 1;
+        traverse(I,j);
+      }
+    }
+  }
+
+  int find() {
+    for(int i = 1; i <= N; ++i){
+      int cnt = 0;
+      for(int j = 1; j <= N; ++j){
+        if (i!=j&&V[i][j]==1)
+          cnt++;
+      }
+      if (cnt == N-1)
+        return i;
+    }
+    return -1;
   }
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -37,7 +62,7 @@ public class usacoMooloo {
   true;}boolean hasNext(){return p();}String next(){p();return t.nextToken();}int
   nextInt(){return Integer.parseInt(next());}long nextLong(){return Long.parseLong(
   next());}double nextDouble(){return Double.parseDouble(next());}}public static
-  void main(String[]args){usacoMooloo t=new usacoMooloo();t.run();t.c();}
+  void main(String[]args){usacoFactory t=new usacoFactory();t.run();t.c();}
   /////////////////////////////////////////////////////////////////////////////////
-  static String file;
+  static String file = "factory";
 }

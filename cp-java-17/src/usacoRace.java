@@ -3,25 +3,43 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Problem    = usacoMooloo
- * Date       = Thu Jul 18 17:47:31 KST 2024
+ * Problem    = usacoRace
+ * Date       = Tue Jul 23 23:18:45 KST 2024
  */
-public class usacoMooloo {
+public class usacoRace {
 
   public void run() {
-    int n = in.nextInt();
-    long k = in.nextLong();
-    long[] d = new long[n];
-    for(int i = 0; i < n; ++i)
-      d[i]=in.nextLong();
-    long cost = 0;
-    for(int i = 0; i < n;){
-      int j = i+1;
-      while(j < n && d[j]-d[i] < d[j-1]-d[i]+1+k) j++;
-      cost+=1+k+d[j-1]-d[i];
-      i=j;
+    long K = in.nextLong();
+    int N = in.nextInt();
+    long[][] X = new long[N][2];
+    for(int i = 0; i < N; ++i){
+      X[i][0] =in.nextLong();
+      X[i][1] = Long.MAX_VALUE;
     }
-    out.println(cost);
+
+    long s = 1;
+    while(d(s) <= K){
+      for(long[] x : X){
+        long p = d(s) + Math.max(0, d(s-1) - d(x[0]-1));
+        if (p > K)
+          continue;
+        long r = K-p;
+//        System.out.println(String.format("s:%d, p:%d, r:%d", s, p, r));
+        x[1]=Math.min(x[1], s + Math.max(0,s - x[0]) + ceil(r,s));
+      }
+      s++;
+    }
+
+    for(var x : X)
+      out.println(x[1]);
+  }
+
+  long d(long s){
+    return (s*(s+1))/2;
+  }
+
+  long ceil(long a, long b){
+    return (long) Math.ceil((double) a / (double) b);
   }
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -37,7 +55,7 @@ public class usacoMooloo {
   true;}boolean hasNext(){return p();}String next(){p();return t.nextToken();}int
   nextInt(){return Integer.parseInt(next());}long nextLong(){return Long.parseLong(
   next());}double nextDouble(){return Double.parseDouble(next());}}public static
-  void main(String[]args){usacoMooloo t=new usacoMooloo();t.run();t.c();}
+  void main(String[]args){usacoRace t=new usacoRace();t.run();t.c();}
   /////////////////////////////////////////////////////////////////////////////////
-  static String file;
+  static String file = "race";
 }

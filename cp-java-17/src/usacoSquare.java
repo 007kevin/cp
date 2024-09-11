@@ -3,25 +3,39 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Problem    = usacoMooloo
- * Date       = Thu Jul 18 17:47:31 KST 2024
+ * Problem    = usacoSquare
+ * Date       = Wed Sep  4 22:02:38 PDT 2024
  */
-public class usacoMooloo {
+public class usacoSquare {
+
+  static class Rectangle {
+    int x1,y1,x2,y2;
+    public Rectangle(int x1, int y1, int x2, int y2) {
+      this.x1=x1;
+      this.y1=y1;
+      this.x2=x2;
+      this.y2=y2;
+    }
+    int square(Rectangle that){
+      int w = Math.max(this.x2, that.x2) - Math.min(this.x1, that.x1);
+      int l = Math.max(this.y2, that.y2) - Math.min(this.y1, that.y1);
+      return Math.max(w,l);
+    }
+  }
 
   public void run() {
-    int n = in.nextInt();
-    long k = in.nextLong();
-    long[] d = new long[n];
-    for(int i = 0; i < n; ++i)
-      d[i]=in.nextLong();
-    long cost = 0;
-    for(int i = 0; i < n;){
-      int j = i+1;
-      while(j < n && d[j]-d[i] < d[j-1]-d[i]+1+k) j++;
-      cost+=1+k+d[j-1]-d[i];
-      i=j;
-    }
-    out.println(cost);
+    var r1 = new Rectangle(
+        in.nextInt(),
+        in.nextInt(),
+        in.nextInt(),
+        in.nextInt());
+    var r2 = new Rectangle(
+        in.nextInt(),
+        in.nextInt(),
+        in.nextInt(),
+        in.nextInt());
+    var s = r1.square(r2);
+    out.println(s*s);
   }
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -37,7 +51,7 @@ public class usacoMooloo {
   true;}boolean hasNext(){return p();}String next(){p();return t.nextToken();}int
   nextInt(){return Integer.parseInt(next());}long nextLong(){return Long.parseLong(
   next());}double nextDouble(){return Double.parseDouble(next());}}public static
-  void main(String[]args){usacoMooloo t=new usacoMooloo();t.run();t.c();}
+  void main(String[]args){usacoSquare t=new usacoSquare();t.run();t.c();}
   /////////////////////////////////////////////////////////////////////////////////
-  static String file;
+  static String file = "square";
 }

@@ -3,25 +3,31 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Problem    = usacoMooloo
- * Date       = Thu Jul 18 17:47:31 KST 2024
+ * Problem    = usacoPlanting
+ * Date       = Fri Jul 26 18:03:50 KST 2024
  */
-public class usacoMooloo {
+public class usacoPlanting {
+
+  static class Node {
+    int in = 0;
+  }
 
   public void run() {
     int n = in.nextInt();
-    long k = in.nextLong();
-    long[] d = new long[n];
-    for(int i = 0; i < n; ++i)
-      d[i]=in.nextLong();
-    long cost = 0;
-    for(int i = 0; i < n;){
-      int j = i+1;
-      while(j < n && d[j]-d[i] < d[j-1]-d[i]+1+k) j++;
-      cost+=1+k+d[j-1]-d[i];
-      i=j;
+    Node[] nodes = new Node[n+1];
+    for(int i = 1; i <= n; ++i)
+      nodes[i] = new Node();
+    for(int i = 1; i < n; ++i){
+      int a = in.nextInt();
+      int b = in.nextInt();
+      nodes[a].in++;
+      nodes[b].in++;
     }
-    out.println(cost);
+    int ans = 0;
+    for(int i = 1; i <= n; ++i){
+      ans = Math.max(ans, nodes[i].in);
+    }
+    out.println(ans+1);
   }
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -37,7 +43,7 @@ public class usacoMooloo {
   true;}boolean hasNext(){return p();}String next(){p();return t.nextToken();}int
   nextInt(){return Integer.parseInt(next());}long nextLong(){return Long.parseLong(
   next());}double nextDouble(){return Double.parseDouble(next());}}public static
-  void main(String[]args){usacoMooloo t=new usacoMooloo();t.run();t.c();}
+  void main(String[]args){usacoPlanting t=new usacoPlanting();t.run();t.c();}
   /////////////////////////////////////////////////////////////////////////////////
-  static String file;
+  static String file = "planting";
 }

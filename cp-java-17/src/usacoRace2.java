@@ -3,26 +3,37 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Problem    = usacoMooloo
- * Date       = Thu Jul 18 17:47:31 KST 2024
+ * Problem    = usacoRace2
+ * Date       = Fri Jul 26 10:15:15 KST 2024
  */
-public class usacoMooloo {
+public class usacoRace2 {
 
   public void run() {
-    int n = in.nextInt();
-    long k = in.nextLong();
-    long[] d = new long[n];
-    for(int i = 0; i < n; ++i)
-      d[i]=in.nextLong();
-    long cost = 0;
-    for(int i = 0; i < n;){
-      int j = i+1;
-      while(j < n && d[j]-d[i] < d[j-1]-d[i]+1+k) j++;
-      cost+=1+k+d[j-1]-d[i];
-      i=j;
+    int K = in.nextInt();
+    int N = in.nextInt();
+    for(int i = 0; i < N; ++i){
+      out.println(find(K, in.nextInt()));
     }
-    out.println(cost);
-  }
+    }
+
+    int find(int K, int x){
+      int a = 0;
+      int as = 0;
+      int b = 0;
+      int bs = x;
+      for(; a <= K; as++){
+        a+=as;
+        if (a+b >= K)
+          return as + bs - x;
+        if (as >= x){
+          b+=bs;
+          if (a+b >= K)
+            return as + bs - x + 1;
+          bs++;
+        }
+      }
+      return -1;
+    }
 
   /////////////////////////////////////////////////////////////////////////////////
   static InputStream in(){try{if(file!=null)return new FileInputStream(file+".in");
@@ -37,7 +48,7 @@ public class usacoMooloo {
   true;}boolean hasNext(){return p();}String next(){p();return t.nextToken();}int
   nextInt(){return Integer.parseInt(next());}long nextLong(){return Long.parseLong(
   next());}double nextDouble(){return Double.parseDouble(next());}}public static
-  void main(String[]args){usacoMooloo t=new usacoMooloo();t.run();t.c();}
+  void main(String[]args){usacoRace2 t=new usacoRace2();t.run();t.c();}
   /////////////////////////////////////////////////////////////////////////////////
-  static String file;
+  static String file = "race";
 }
