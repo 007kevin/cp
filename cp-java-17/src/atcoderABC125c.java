@@ -3,57 +3,52 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Problem    = usacoLifeguards
- * Date       = Sun Sep 22 16:58:07 PDT 2024
+ * Problem    = atcoderABC125c
+ * Date       = Thu Sep 19 17:11:05 PDT 2024
  */
-public class usacoLifeguards {
-
-  static class Cow implements Comparable<Cow> {
-    int alone = 0;
-    @Override
-    public int compareTo(Cow that) {
-      return this.alone - that.alone;
-    }
-  }
+public class atcoderABC125c {
 
   public void run() {
     int n = in.nextInt();
-    List<Cow> list = new ArrayList<>(n);
-    Map<Integer,Cow> map = new TreeMap<>();
+    int[] a = new int[n];
+    int[] b = new int[n];
+    int[] c = new int[n];
     for(int i = 0; i < n; ++i){
-      int s = in.nextInt();
-      int e = in.nextInt();
-      Cow c = new Cow();
-      map.put(s,c);
-      map.put(e,c);
-      list.add(c);
+      a[i]=in.nextInt();
+      b[i]=a[i];
+      c[i]=a[i];
     }
-    var set = new HashSet<Cow>();
-    int total = 0;
-    var entries = new ArrayList<>(map.entrySet());
-    for(int i = 0; i < entries.size()-1; ++i){
-      var a = entries.get(i);
-      Cow cowA = a.getValue();
-      Integer pointA = a.getKey();
-
-      var b = entries.get(i+1);
-      Cow cowB = b.getValue();
-      Integer pointB = b.getKey();
-
-      if (!set.contains(cowA)){
-        set.add(cowA);
+    for(int i = 1; i < n; ++i){
+      b[i]=gcd(b[i],b[i-1]);
+    }
+    for(int i = n-2; i >= 0; --i){
+      c[i]=gcd(c[i], c[i+1]);
+    }
+    // print(a);
+    // print(b);
+    // print(c);
+    int ans = 0;
+    for(int i = 0; i < n; ++i){
+      if (i==0){
+        ans=Math.max(ans,c[i+1]);
+      } else if (i==n-1){
+        ans=Math.max(ans,b[i-1]);
       } else {
-        set.remove(cowA);
-      }
-      if (set.size()>0){
-        total+=pointB-pointA;
-      }
-      if (set.size()==1){
-        set.forEach(c -> c.alone+=pointB-pointA);
+        ans=Math.max(ans, gcd(b[i-1], c[i+1]));
       }
     }
-    Collections.sort(list);
-    out.println(total - list.get(0).alone);
+    out.println(ans);
+  }
+
+  int gcd(int x, int y){
+    return (y == 0) ? x : gcd(y, x % y);
+  }
+
+  void print(int[] a){
+    System.out.print("{ ");
+    for(int x : a)
+      System.out.print(x + " ");
+    System.out.println("}");
   }
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -69,7 +64,7 @@ public class usacoLifeguards {
   true;}boolean hasNext(){return p();}String next(){p();return t.nextToken();}int
   nextInt(){return Integer.parseInt(next());}long nextLong(){return Long.parseLong(
   next());}double nextDouble(){return Double.parseDouble(next());}}public static
-  void main(String[]args){usacoLifeguards t=new usacoLifeguards();t.run();t.c();}
+  void main(String[]args){atcoderABC125c t=new atcoderABC125c();t.run();t.c();}
   /////////////////////////////////////////////////////////////////////////////////
-  static String file = "lifeguards";
+  static String file;
 }
