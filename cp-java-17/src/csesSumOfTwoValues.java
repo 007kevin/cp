@@ -1,17 +1,26 @@
 
 import java.io.*;
-import java.lang.StackWalker.Option;
 import java.util.*;
 
 /**
- * Problem    = usacoMeasurement
- * Date       = Sun Oct 13 16:08:44 PDT 2024
+ * Problem    = csesSumOfTwoValues
+ * Date       = Sun Oct  6 12:44:12 PDT 2024
  */
-public class usacoMeasurement {
+public class csesSumOfTwoValues {
 
   public void run() {
-
-
+    int n = in.nextInt();
+    int x = in.nextInt();
+    var map = new HashMap<Integer,Integer>();
+    for(int i = 0; i < n; ++i){
+      int a = in.nextInt();
+      if (a < x && map.containsKey(x-a)){
+        out.println((map.get(x-a)+1) + " " + (i+1));
+        return;
+      }
+      map.put(a,i);
+    }
+    out.println("IMPOSSIBLE");
   }
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -27,7 +36,7 @@ public class usacoMeasurement {
   true;}boolean hasNext(){return p();}String next(){p();return t.nextToken();}int
   nextInt(){return Integer.parseInt(next());}long nextLong(){return Long.parseLong(
   next());}double nextDouble(){return Double.parseDouble(next());}}public static
-  void main(String[]args){usacoMeasurement t=new usacoMeasurement();t.run();t.c();}
+  void main(String[]args){csesSumOfTwoValues t=new csesSumOfTwoValues();t.run();t.c();}
   /////////////////////////////////////////////////////////////////////////////////
-  static String file = "measurement";
+  static String file;
 }

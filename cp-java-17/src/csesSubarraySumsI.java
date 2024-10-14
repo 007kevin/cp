@@ -1,17 +1,30 @@
 
 import java.io.*;
-import java.lang.StackWalker.Option;
 import java.util.*;
 
 /**
- * Problem    = usacoMeasurement
- * Date       = Sun Oct 13 16:08:44 PDT 2024
+ * Problem    = csesSubarraySumsI
+ * Date       = Sun Oct  6 12:50:00 PDT 2024
  */
-public class usacoMeasurement {
+public class csesSubarraySumsI {
 
   public void run() {
-
-
+    int n = in.nextInt();
+    long x = in.nextLong();
+    long[] a = new long[n];
+    for(int i =0 ; i < n; ++i)
+      a[i]=in.nextLong();
+    long sum = 0;
+    int cnt = 0;
+    int i = 0, j = 0;
+    while(j < n){
+      sum += a[j];
+      while (sum > x)
+        sum-=a[i++];
+      if (sum == x) cnt++;
+      j++;
+    }
+    out.println(cnt);
   }
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -27,7 +40,7 @@ public class usacoMeasurement {
   true;}boolean hasNext(){return p();}String next(){p();return t.nextToken();}int
   nextInt(){return Integer.parseInt(next());}long nextLong(){return Long.parseLong(
   next());}double nextDouble(){return Double.parseDouble(next());}}public static
-  void main(String[]args){usacoMeasurement t=new usacoMeasurement();t.run();t.c();}
+  void main(String[]args){csesSubarraySumsI t=new csesSubarraySumsI();t.run();t.c();}
   /////////////////////////////////////////////////////////////////////////////////
-  static String file = "measurement";
+  static String file;
 }

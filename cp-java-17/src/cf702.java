@@ -1,17 +1,31 @@
 
 import java.io.*;
-import java.lang.StackWalker.Option;
 import java.util.*;
 
 /**
- * Problem    = usacoMeasurement
- * Date       = Sun Oct 13 16:08:44 PDT 2024
+ * Problem    = cf702
+ * Date       = Sun Oct 13 14:30:00 PDT 2024
  */
-public class usacoMeasurement {
+public class cf702 {
 
   public void run() {
-
-
+    int n = in.nextInt();
+    int m = in.nextInt();
+    long[] a = new long[n];
+    for(int i = 0; i < n; ++i)
+      a[i]=in.nextLong();
+    var set = new TreeSet<Long>();
+    for(int i = 0; i < m; ++i)
+      set.add(in.nextLong());
+    long ans = 0;
+    for(int i = 0; i < n; ++i){
+      Long low = set.floor(a[i]);
+      Long high = set.ceiling(a[i]);
+      if (low == null) low = -20000000001L;
+      if (high == null) high = 20000000001L;
+      ans = Math.max(ans, Math.min(a[i]-low, high-a[i]));
+    }
+    out.println(ans);
   }
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -27,7 +41,7 @@ public class usacoMeasurement {
   true;}boolean hasNext(){return p();}String next(){p();return t.nextToken();}int
   nextInt(){return Integer.parseInt(next());}long nextLong(){return Long.parseLong(
   next());}double nextDouble(){return Double.parseDouble(next());}}public static
-  void main(String[]args){usacoMeasurement t=new usacoMeasurement();t.run();t.c();}
+  void main(String[]args){cf702 t=new cf702();t.run();t.c();}
   /////////////////////////////////////////////////////////////////////////////////
-  static String file = "measurement";
+  static String file;
 }

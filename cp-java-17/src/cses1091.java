@@ -1,17 +1,35 @@
 
 import java.io.*;
-import java.lang.StackWalker.Option;
 import java.util.*;
 
 /**
- * Problem    = usacoMeasurement
- * Date       = Sun Oct 13 16:08:44 PDT 2024
+ * Problem    = cses1091
+ * Date       = Wed Oct  9 16:35:40 PDT 2024
  */
-public class usacoMeasurement {
+public class cses1091 {
 
   public void run() {
-
-
+    int n = in.nextInt();
+    int m = in.nextInt();
+    var map = new TreeMap<Integer,Integer>();
+    for(int i = 0; i < n; ++i){
+        int h = in.nextInt();
+        map.put(h,map.getOrDefault(h, 0) + 1);
+    }
+    for(int i = 0; i < m; ++i){
+      int c = in.nextInt();
+      var e = map.floorEntry(c);
+      if (e == null){
+        out.println(-1);
+        continue;
+      }
+      out.println(e.getKey());
+      if (e.getValue() - 1 == 0){
+        map.remove(e.getKey());
+      } else {
+        map.put(e.getKey(), e.getValue() - 1);
+      }
+    }
   }
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -27,7 +45,7 @@ public class usacoMeasurement {
   true;}boolean hasNext(){return p();}String next(){p();return t.nextToken();}int
   nextInt(){return Integer.parseInt(next());}long nextLong(){return Long.parseLong(
   next());}double nextDouble(){return Double.parseDouble(next());}}public static
-  void main(String[]args){usacoMeasurement t=new usacoMeasurement();t.run();t.c();}
+  void main(String[]args){cses1091 t=new cses1091();t.run();t.c();}
   /////////////////////////////////////////////////////////////////////////////////
-  static String file = "measurement";
+  static String file;
 }

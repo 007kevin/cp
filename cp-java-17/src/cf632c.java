@@ -1,17 +1,38 @@
 
 import java.io.*;
-import java.lang.StackWalker.Option;
 import java.util.*;
 
 /**
- * Problem    = usacoMeasurement
- * Date       = Sun Oct 13 16:08:44 PDT 2024
+ * Problem    = cf632c
+ * Date       = Sun Sep 29 15:19:33 PDT 2024
  */
-public class usacoMeasurement {
+public class cf632c {
+
+  static class Test implements Comparable<Test> {
+
+    @Override
+    public int compareTo(cf632c.Test o) {
+      // TODO Auto-generated method stub
+      throw new UnsupportedOperationException("Unimplemented method 'compareTo'");
+    }
+
+  }
 
   public void run() {
+    int n = in.nextInt();
+    List<String> list = new ArrayList<>();
+    for(int i = 0; i < n; ++i)
+      list.add(in.next());
 
+    Collections.sort(list, (a, b) -> {
+      String ab = a+b;
+      String ba = b+a;
+      return ab.compareTo(ba);
+    });
 
+    StringJoiner joiner = new StringJoiner("");
+    list.forEach(joiner::add);
+    out.println(joiner);
   }
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -27,7 +48,7 @@ public class usacoMeasurement {
   true;}boolean hasNext(){return p();}String next(){p();return t.nextToken();}int
   nextInt(){return Integer.parseInt(next());}long nextLong(){return Long.parseLong(
   next());}double nextDouble(){return Double.parseDouble(next());}}public static
-  void main(String[]args){usacoMeasurement t=new usacoMeasurement();t.run();t.c();}
+  void main(String[]args){cf632c t=new cf632c();t.run();t.c();}
   /////////////////////////////////////////////////////////////////////////////////
-  static String file = "measurement";
+  static String file;
 }

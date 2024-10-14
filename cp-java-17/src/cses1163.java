@@ -3,24 +3,59 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Problem    = usacoDiamond
- * Date       = Thu May 30 22:05:10 PDT 2024
+ * Problem    = cses1163
+ * Date       = Sun Oct 13 15:20:50 PDT 2024
  */
-public class usacoDiamond {
+public class cses1163 {
+
+  static class Pair implements Comparable<Pair> {
+    int a;
+    int b;
+    Pair(int a, int b){
+      this.a=a;
+      this.b=b;
+    }
+
+    public int length() {
+      return this.b - this.a;
+    }
+
+    @Override
+    public int compareTo(Pair that){
+      if (this.length() == that.length()){
+        return this.hashCode() - that.hashCode();
+      }
+      return that.length() - this.length();
+    }
+
+    @Override
+    public String toString() {
+      return String.format("{%d, %d}", this.a, this.b);
+    }
+  }
+
 
   public void run() {
+    int x =in.nextInt();
     int n = in.nextInt();
-    int k = in.nextInt();
-    int[] d = new int[n];
-    for(int i = 0; i < n; ++i) d[i] = in.nextInt();
-    Arrays.sort(d);
-    int a = 0;
+    var map = new TreeMap<Integer,Pair>();
+    var pq = new PriorityQueue<Pair>();
+    var pair = new Pair(0,x);
+    map.put(0, pair);
+    pq.add(pair);
     for(int i = 0; i < n; ++i){
-      int j = i+1;
-      while(j < n && d[j] - d[i] <= k) j++;
-      a = Math.max(a, j-i);
+      Integer l = in.nextInt();
+      var e = map.floorEntry(l);
+      pq.remove(e.getValue());
+      map.remove(e.getKey());
+      var pairLeft = new Pair(e.getValue().a, l);
+      var pairRight = new Pair(l,e.getValue().b);
+      pq.add(pairLeft);
+      pq.add(pairRight);
+      map.put(pairLeft.a, pairLeft);
+      map.put(pairRight.a, pairRight);
+      out.println(pq.peek().length());
     }
-    out.println(a);
   }
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -36,7 +71,7 @@ public class usacoDiamond {
   true;}boolean hasNext(){return p();}String next(){p();return t.nextToken();}int
   nextInt(){return Integer.parseInt(next());}long nextLong(){return Long.parseLong(
   next());}double nextDouble(){return Double.parseDouble(next());}}public static
-  void main(String[]args){usacoDiamond t=new usacoDiamond();t.run();t.c();}
+  void main(String[]args){cses1163 t=new cses1163();t.run();t.c();}
   /////////////////////////////////////////////////////////////////////////////////
-  static String file = "diamond";
+  static String file;
 }
