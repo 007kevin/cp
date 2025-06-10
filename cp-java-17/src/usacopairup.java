@@ -2,104 +2,42 @@
 import java.io.*;
 import java.util.*;
 
-import javax.management.RuntimeErrorException;
-
 /**
  * Problem    = usacopairup
- * Date       = Sun Oct  6 14:13:51 PDT 2024
+ * Date       = Tue Nov 26 22:09:52 PST 2024
  */
 public class usacopairup {
 
-  static class Iterator {
-    int[] x;
-    int[] y;
-    List<Integer> sort;
-    int c1 = 0;
-    int c2 = 0;
-    Iterator(int[] x, int[] y, List<Integer> sort){
+  static class Pair {
+    int x,y;
+    Pair(int x, int y){
       this.x=x;
       this.y=y;
-      this.sort=sort;
-    }
-
-    int getMilk() {
-      return y[sort.get(c1)];
-    }
-
-    boolean equals(Iterator that){
-      return this.c1 == that.c1 && this.c2 == that.c2;
-    }
-
-    boolean lt(Iterator that){
-      if (this.c1 < that.c1)
-        return true;
-      if (this.c1 == that.c1)
-        return this.c2 < that.c2;
-      return false;
-    }
-
-    public String toString() {
-      return String.format("{c1:%d, c2:%d}", c1, c2);
-    }
-
-  }
-
-  static class Forward extends Iterator {
-    Forward(int[] x, int[] y, List<Integer> sort){
-      super(x,y,sort);
-      c1 = 0;
-      c2 = 0;
-    }
-
-    void next() {
-      if (c2 == x[sort.get(c1)] - 1){
-        c2 = 0;
-        c1++;
-      } else{
-        c2++;
-      }
     }
   }
-
-  static class Reverse extends Iterator {
-    Reverse(int[] x, int[] y, List<Integer> sort){
-      super(x,y,sort);
-      c1 = sort.size()-1;
-      c2 = x[sort.get(c1)];
-    }
-
-    void next() {
-      if (c2 == 1){
-        c1--;
-        c2 = x[sort.get(c1)];
-      } else {
-        c2--;
-      }
-    }
-  }
-
 
   public void run() {
-    int n = in.nextInt();
-    int[] x = new int[n];
-    int[] y = new int[n];
-    var sort = new ArrayList<Integer>(n);
-    for(int i = 0; i < n; ++i){
-      x[i]=in.nextInt();
-      y[i]=in.nextInt();
-      sort.add(i);
+    int N = in.nextInt();
+    List<Pair> p = new ArrayList<>(N);
+    for(int i = 0; i < N; ++i)
+      p.add(new Pair(in.nextInt(), in.nextInt()));
+    Collections.sort(p, Comparator.comparingInt(a -> a.y));
+    int ans = 0;
+    int i = 0;
+    int j = N-1;
+    while(i<j){
+      var a = p.get(i);
+      var b = p.get(j);
+      int c = Math.min(a.x, b.x);
+      ans=Math.max(ans,a.y+b.y);
+      a.x-=c;
+      b.x-=c;
+      if (a.x == 0) i++;
+      if (b.x == 0) j--;
     }
-    Collections.sort(sort, Comparator.comparingInt(v -> y[v]));
-    var forward = new Forward(x, y, sort);
-    var reverse = new Reverse(x, y, sort);
-    int time = 0;
-    while(forward.lt(reverse)){
-//      out.println(forward + " " + reverse + " " + (forward.getMilk() + reverse.getMilk()));
-      time = Math.max(time, forward.getMilk() + reverse.getMilk());
-      forward.next();
-      reverse.next();
-    }
-    out.println(time);
+    if (i == j && p.get(i).x > 1)
+      ans = Math.max(ans, p.get(i).y * 2);
+    out.println(ans);
   }
 
   /////////////////////////////////////////////////////////////////////////////////

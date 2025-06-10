@@ -3,53 +3,44 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Problem    = usacoAngry
- * Date       = Sat Jul  6 09:37:23 KST 2024
+ * Problem    = usacoangry
+ * Date       = Sat Nov  2 10:05:07 PDT 2024
  */
-public class usacoAngry {
+public class usacoangry {
 
   public void run() {
-    int n = in.nextInt();
-    long[] b = new long[n];
-    for(int i = 0; i < n; ++i)
-      b[i]=in.nextLong();
-    Arrays.sort(b);
-    int max = 0;
-    for(int i = 0; i < n; ++i){
-      long[] r = new long[n];
-      r[i]=1;
-      max=Math.max(max,1 + simulate(b,r,1));
-//      print(r);
+    int N = in.nextInt();
+    int K = in.nextInt();
+    int[] x = new int[N];
+    for(int i = 0; i < N; ++i)
+      x[i]=in.nextInt();
+    Arrays.sort(x);
+    int l = 0;
+    int r = 1000000000;
+    int R = 0;
+    while(l<=r){
+      int p = (l+r)/2;
+      int k = run(x,p);
+      if (k <= K){
+        R = p;
+        r = p-1;
+      } else
+        l = p+1;
     }
-    out.println(max);
+    out.println(R);
   }
 
-  int simulate(long[] b, long[] r, long t){
-    int cnt = 0;
-    boolean cont = false;
-    for(int i = 0; i < b.length; ++i){
-      if (r[i] == t){
-        for(int j = 0; j < b.length; ++j){
-          if (r[j] == 0 && b[i] - t <= b[j] && b[j] <= b[i] + t){
-            cont = true;
-            cnt++;
-            r[j]=t+1;
-          }
-        }
+  int run(int[] x, int p){
+    int d = 0;
+    int r = -1;
+    for(int i = 0; i < x.length; ++i){
+      if (x[i] > r){
+        d++;
+        r=x[i]+(2*p);
       }
     }
-    if (cont){
-      return cnt + simulate(b,r,t+1);
-    }
-    return cnt;
-  }
-
-  void print(long[] r){
-    out.print("{");
-    for(int i = 0; i < r.length; ++i){
-      out.print(r[i] + ",");
-    }
-    out.println("}");
+    //out.println(String.format("for power %d, d=%d", p, d));
+    return d;
   }
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -65,7 +56,7 @@ public class usacoAngry {
   true;}boolean hasNext(){return p();}String next(){p();return t.nextToken();}int
   nextInt(){return Integer.parseInt(next());}long nextLong(){return Long.parseLong(
   next());}double nextDouble(){return Double.parseDouble(next());}}public static
-  void main(String[]args){usacoAngry t=new usacoAngry();t.run();t.c();}
+  void main(String[]args){usacoangry t=new usacoangry();t.run();t.c();}
   /////////////////////////////////////////////////////////////////////////////////
   static String file = "angry";
 }

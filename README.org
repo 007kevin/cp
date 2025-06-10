@@ -20,8 +20,8 @@ https://github.com/peterlamar/python-cp-cheatsheet
 
 * Progress
 :PROPERTIES:
-:HASH:     -490446297499652142
-:MODIFIED: 2024-05-07 22:39
+:HASH:     -845445643700559452
+:MODIFIED: 2025-02-02 15:26
 :END:
 
 [Oct 2/2023] [[https://codeforces.com/problemset/page/1?tags=1200-1600][default sort 1200-1600]]
@@ -68,3 +68,6 @@ https://kenkoooo.com/atcoder/#/training/Boot%20camp%20for%20Beginners/1
 
 USACO Guide
 https://usaco.guide/bronze
+
+[Feb 2/2025]
+https://codeforces.com/problemset?tags=1400-1600
